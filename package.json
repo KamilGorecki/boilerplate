@@ -1,11 +1,20 @@
 {
-  "name": "www-boiler-plate",
-  "version": "1.0.0",
-  "description": "Boilerplate for starting new project",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Ka Mil",
-  "license": "ISC"
+    "name": "www-boiler-plate",
+    "version": "1.0.0",
+    "description": "Boilerplate for starting new project",
+    "main": "index.js",
+    "scripts": {
+        "build:scss": "node-sass --output-style compressed -o dist/styles src/styles",
+        "watch:scss": "onchange -v -i 'src/styles/*.scss' -- npm run build:scss",
+        "start": "browser-sync -s -f './index.html, dist/**/*, src/**/*'",
+        "dev": "parallelshell 'npm start' 'npm run watch:scss'"
+    },
+    "author": "Ka Mil",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.26.10",
+        "node-sass": "^4.14.1",
+        "onchange": "^7.0.2",
+        "parallelshell": "^3.0.1"
+    }
 }
